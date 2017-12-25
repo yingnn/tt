@@ -1,7 +1,10 @@
+"""classes for get k_chart data and save data locally
+
+"""
 from __future__ import print_function
 import os
-from unipath import Path
 import functools
+from unipath import Path
 from .utils import down2save_update
 from . import consts as CONSTS
 
@@ -178,7 +181,8 @@ class GetData(RunFunc):
     save df to local without duplication
     """
 
-    def __init__(self, codes, ktypes=CONSTS.ktypes, start=None, end=None, home='.'):
+    def __init__(self, codes, ktypes=CONSTS.ktypes,
+                 start=None, end=None, home='.'):
         """
         Parameters
         ----------

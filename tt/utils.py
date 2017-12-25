@@ -159,7 +159,7 @@ def get_local(code, ktype='d', path='.'):
     file_list = path.listdir(pattern, names_only=True)
     if len(file_list) == 1:
         return file_list[0]
-    elif not file_list: # empty means False
+    elif not file_list:  # empty means False
         return warn('NO ITEM')
     else:
         raise Exception('MORE THAN 1 ITEM')
