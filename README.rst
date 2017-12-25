@@ -1,6 +1,6 @@
-==
-tt
-==
+============
+tushare_easy
+============
 
 
 .. image:: https://img.shields.io/pypi/v/tt.svg
@@ -18,17 +18,12 @@ tt
      :alt: Updates
 
 
-test
+Get stock market k_chart data using ``tushare.get_k_data`` api, and save data to tab separated files locally
 
 
 * Free software: MIT license
-* Documentation: https://tt.readthedocs.io.
+* Documentation: https://tt-.readthedocs.io.
 
-
-Features
---------
-
-* TODO
 
 Credits
 ---------
