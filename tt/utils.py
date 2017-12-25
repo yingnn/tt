@@ -20,7 +20,8 @@ def get_data(code, ktype='d', start=None, end=None):
     print(code, ktype)
     return ts.get_k_data(code, ktype=ktype,
                          start=start, end=end,
-                         retry_count=CONSTS.retry_count, pause=CONSTS.pause)
+                         retry_count=CONSTS.retry_count,
+                         pause=CONSTS.pause)
 
 
 def set_date_index(df, labels=CONSTS.index_labels_date):
@@ -161,6 +162,103 @@ def get_local(code, ktype='d', path='.'):
         return warn('NO ITEM')
     else:
         raise Exception('MORE THAN 1 ITEM')
+        
+def get_arrow(strftime):
+    """
+    get ``arrow.arrow.Arrow`` from str with local timezone info
+
+    Parameters
+    ----------
+    strftime : str, with format '%Y-%m-%d-%M-%s'
+
+    Returns
+    -------
+    ``arrow.arrow.Arrow``
+
+    """
+    time_tz = strftime + CONSTS.tz_local
+    return arrow.get(time_tz, CONSTS.time_fmt)
+    
+def get_end_date(ktype='d'):
+    """
+    get up-to-date time of market
+
+    Parameters
+    ----------
+    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+
+    Returns
+    -------
+    end_datetime : ``arrow.arrow.Arrow``
+
+    """
+    today = arrow.utcnow()
+    today = today.to(CONSTS.tz_local)
+    start = today.shift(**CONSTS.datetime_shift_search[ktype])
+    date_fmt = 'YYYY-MM-DD'
+    start = start.format(date_fmt)
+    end = today.format(date_fmt)
+    df = ts.get_k_data(CONSTS.code_std, index=True, \
+        ktype=ktype, start=start, end=end)
+    if df.empty:
+        raise Exception('NO DATA FOUNDED')
+    df = prep(df)
+    if df.empty:
+        return df
+    _, end_std = extract_start_end(df)
+    return get_arrow(end_std)
+    
+def get_threshhold_datetime(time_str, ktype='d'):
+    """
+    get threshhold of recent time locally
+
+    Parameters
+    ----------
+    time_str : str, with format '%Y-%m-%d-%M-%s'
+    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+
+    Returns
+    -------
+    threshhold_datetime : ``arrow.arrow.Arrow``
+
+    """
+    time_arrow = get_arrow(time_str)
+    time_arrow = time_arrow.shift(**CONSTS.datetime_shift[ktype])
+
+    if ktype == '60':
+        return time_arrow.ceil('hour')
+    elif ktype == 'd':
+        return time_arrow.ceil('day')
+    elif ktype == 'w':
+        return time_arrow.ceil('week')
+    elif ktype == 'm':
+        return time_arrow.ceil('month')
+    elif ktype in ['5', '15', '30']:
+        return time_arrow.ceil('minute')
+    else:
+        raise Exception('KTYPE ERROR')
+        
+def is_up_to_date(end_local_str, ktype='d',):
+    """
+    check whether local data is up-to-date
+
+    Parameters
+    ----------
+    end_local_str : str, with format '%Y-%m-%d-%M-%s'
+    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+
+    Returns
+    -------
+    boolean
+
+    """
+    # saved last date
+    end_local = get_threshhold_datetime(end_local_str, ktype) 
+    end_std = get_end_date(ktype)
+    if end_std > end_local:
+        return False
+    else:
+        return True
 
 
 def down2save(code, ktype='d', start=None, end=None, path='.'):
@@ -208,15 +306,20 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     """
     cwd = Path(path)
     cwd.chdir()
-
+    
     filename_demo_local = get_local(code, ktype, path)
     if not isinstance(filename_demo_local, str):
         return down2save(code, ktype, start, end, path)
-    name_list_demo_local = split_filename(filename_demo_local)
-    filename_local = fmt_filename(name_list_demo_local[:-1])
+        
     df_demo_local = read_data(filename_demo_local)
     print(df_demo_local)
-    start_local, _ = extract_start_end(df_demo_local)
+    start_local, end_local = extract_start_end(df_demo_local)
+    if is_up_to_date(end_local, ktype):
+        print('data up to date')
+        return
+        
+    name_list_demo_local = split_filename(filename_demo_local)
+    filename_local = get_filename(name_list_demo_local[:-1])
 
     df = get_data(code, ktype, start, end)
     if df.empty:
