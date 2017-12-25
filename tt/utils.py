@@ -74,7 +74,7 @@ def read_data(filepath, header=0):
     Parameters
     ----------
     filepath : str
-
+    header : int or None
     Returns
     -------
     pd.DataFrame
@@ -159,7 +159,7 @@ def get_local(code, ktype='d', path='.'):
     file_list = path.listdir(pattern, names_only=True)
     if len(file_list) == 1:
         return file_list[0]
-    elif len(file_list) == 0:
+    elif not file_list: # empty means False
         return warn('NO ITEM')
     else:
         raise Exception('MORE THAN 1 ITEM')
@@ -262,8 +262,7 @@ def is_up_to_date(end_local_str, ktype='d',):
     end_std = get_end_date(ktype)
     if end_std > end_local:
         return False
-    else:
-        return True
+    return True
 
 
 def down2save(code, ktype='d', start=None, end=None, path='.'):
@@ -302,6 +301,8 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     ----------
     code : str
     ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+    start : str or None, format '%Y-%m-%d-%M-%s'
+    end : str or None, format the same as `start`
     path : str
         where to search files locally
 
@@ -340,14 +341,14 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     print(df_demo_new)
     _, end_newer = extract_start_end(df_demo_new)
 
-    filename_new = [code, start_local, end_newer, ktype]
-    filename_new = fmt_filename(filename_new)
+    filename_list_new = [code, start_local, end_newer, ktype]
+    filename_new = fmt_filename(filename_list_new)
 
     save(df_newer, filename_local, mode='a')
     os.rename(filename_local, filename_new)
     print('rename %s %s' % (filename_local, filename_new))
 
-    filename_demo_new = fmt_filename_demo(filename_new)
+    filename_demo_new = fmt_filename_demo(filename_list_new)
     save(df_demo_new, filename_demo_new, header=True)
 
     os.remove(filename_demo_local)

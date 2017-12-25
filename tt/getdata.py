@@ -3,6 +3,7 @@ import os
 from unipath import Path
 import functools
 from .utils import down2save_update
+from . import consts as CONSTS
 
 
 __all__ = ['RunFunc', 'GetData']
@@ -35,7 +36,7 @@ class Base(object):
         Returns
         -------
         """
-        self._home = Path(self.__abs(home))
+        self._home = Path(home).absolute()
 
     def __str__(self):
         return self.home
@@ -43,8 +44,8 @@ class Base(object):
     def __repr__(self):
         return '%s(%r)' % (self.__class__.__name__, self.home)
 
-    def __abs(self, string):
-        return os.path.abspath(string)
+    # def __abs(self, string):
+    #     return os.path.abspath(string)
 
     @property
     def home(self):
@@ -52,7 +53,7 @@ class Base(object):
 
     @home.setter
     def home(self, path):
-        self._home = Path(self.__abs(path))
+        self._home = Path(path).absolute()
 
     def make_home(self, force=False):
         """
@@ -125,6 +126,10 @@ class RunFunc(Base):
     directory
     """
 
+    def __init__(self, home='.'):
+        super(RunFunc, self).__init__(home)
+        self._func = None
+
     def set_func(self, func):
         """
         set a function to run
@@ -173,13 +178,13 @@ class GetData(RunFunc):
     save df to local without duplication
     """
 
-    def __init__(self, codes, ktypes, start=None, end=None, home='.'):
+    def __init__(self, codes, ktypes=CONSTS.ktypes, start=None, end=None, home='.'):
         """
         Parameters
         ----------
         home : str, current work directory
         codes : list-like
-        ktype : list-like
+        ktypes: list-like
         start : str, time format '%Y-%m-%d-%H-%M'
         end : str, same format to `start`
 
