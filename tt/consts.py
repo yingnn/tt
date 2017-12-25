@@ -37,4 +37,3 @@ datetime_shift = {
     'w': {'weeks': 1},
     'm': {'months': 1},
 }
-

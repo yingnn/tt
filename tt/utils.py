@@ -5,6 +5,7 @@ tushare_easy utils
 from __future__ import print_function
 import os
 from warnings import warn
+import arrow
 import pandas as pd
 import tushare as ts
 from unipath import Path
@@ -162,7 +163,8 @@ def get_local(code, ktype='d', path='.'):
         return warn('NO ITEM')
     else:
         raise Exception('MORE THAN 1 ITEM')
-        
+
+
 def get_arrow(strftime):
     """
     get ``arrow.arrow.Arrow`` from str with local timezone info
@@ -178,7 +180,8 @@ def get_arrow(strftime):
     """
     time_tz = strftime + CONSTS.tz_local
     return arrow.get(time_tz, CONSTS.time_fmt)
-    
+
+
 def get_end_date(ktype='d'):
     """
     get up-to-date time of market
@@ -198,8 +201,8 @@ def get_end_date(ktype='d'):
     date_fmt = 'YYYY-MM-DD'
     start = start.format(date_fmt)
     end = today.format(date_fmt)
-    df = ts.get_k_data(CONSTS.code_std, index=True, \
-        ktype=ktype, start=start, end=end)
+    df = ts.get_k_data(CONSTS.code_std, index=True,
+                       ktype=ktype, start=start, end=end)
     if df.empty:
         raise Exception('NO DATA FOUNDED')
     df = prep(df)
@@ -207,7 +210,8 @@ def get_end_date(ktype='d'):
         return df
     _, end_std = extract_start_end(df)
     return get_arrow(end_std)
-    
+
+
 def get_threshhold_datetime(time_str, ktype='d'):
     """
     get threshhold of recent time locally
@@ -237,7 +241,8 @@ def get_threshhold_datetime(time_str, ktype='d'):
         return time_arrow.ceil('minute')
     else:
         raise Exception('KTYPE ERROR')
-        
+
+
 def is_up_to_date(end_local_str, ktype='d',):
     """
     check whether local data is up-to-date
@@ -253,7 +258,7 @@ def is_up_to_date(end_local_str, ktype='d',):
 
     """
     # saved last date
-    end_local = get_threshhold_datetime(end_local_str, ktype) 
+    end_local = get_threshhold_datetime(end_local_str, ktype)
     end_std = get_end_date(ktype)
     if end_std > end_local:
         return False
@@ -306,20 +311,20 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     """
     cwd = Path(path)
     cwd.chdir()
-    
+
     filename_demo_local = get_local(code, ktype, path)
     if not isinstance(filename_demo_local, str):
         return down2save(code, ktype, start, end, path)
-        
+
     df_demo_local = read_data(filename_demo_local)
     print(df_demo_local)
     start_local, end_local = extract_start_end(df_demo_local)
     if is_up_to_date(end_local, ktype):
         print('data up to date')
         return
-        
+
     name_list_demo_local = split_filename(filename_demo_local)
-    filename_local = get_filename(name_list_demo_local[:-1])
+    filename_local = fmt_filename(name_list_demo_local[:-1])
 
     df = get_data(code, ktype, start, end)
     if df.empty:
