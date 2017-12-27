@@ -6,10 +6,8 @@
 
 import unittest
 
-from tt import tt
 
-
-class TestTt(unittest.TestCase):
+class TestTushareEasy(unittest.TestCase):
     """Tests for `tt` package."""
 
     def setUp(self):
