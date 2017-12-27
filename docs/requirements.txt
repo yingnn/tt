@@ -1,2 +1,2 @@
 numpydoc
-tushare_easy
+#tushare_easy
