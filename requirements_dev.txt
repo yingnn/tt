@@ -12,3 +12,5 @@ arrow
 unipath
 pandas
 tushare
+
+numpydoc
