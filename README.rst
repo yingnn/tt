@@ -3,8 +3,8 @@ tushare_easy
 ============
 
 
-.. image:: https://img.shields.io/pypi/v/tt.svg
-        :target: https://pypi.python.org/pypi/tt
+.. image:: https://img.shields.io/pypi/v/tushare_easy.svg
+        :target: https://pypi.python.org/pypi/tushare_easy
 
 .. image:: https://img.shields.io/travis/yingnn/tt.svg
         :target: https://travis-ci.org/yingnn/tt
