@@ -1,2 +1,7 @@
 numpydoc
 #tushare_easy
+
+unipth
+arrow
+pandas
+tushare
