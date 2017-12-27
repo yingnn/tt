@@ -63,3 +63,6 @@ target/
 
 nppBackup/
 .idea/
+nppBackup/
+*.py[cod]
+*~
