@@ -75,9 +75,10 @@ def read_data(filepath, header=0):
     ----------
     filepath : str
     header : int or None
+
     Returns
     -------
-    pd.DataFrame
+    ``pandas.DataFrame``
     """
     return pd.read_table(filepath, parse_dates=True,
                          index_col=0, header=header)
