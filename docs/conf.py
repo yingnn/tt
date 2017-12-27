@@ -31,7 +31,9 @@ project_root = os.path.dirname(cwd)
 # version is used.
 sys.path.insert(0, project_root)
 
-import tushare_easy
+os.environ['MPLBACKEND'] = 'Agg'  # avoid tkinter import errors on rtfd.io
+
+
 
 # -- General configuration ---------------------------------------------
 
@@ -40,7 +42,17 @@ import tushare_easy
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.imgmath',
+    'sphinx.ext.todo',
+    'numpydoc',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -61,7 +73,8 @@ copyright = u"2017, tushare_easy"
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
 # the built documents.
-#
+
+import tushare_easy
 # The short X.Y version.
 version = tushare_easy.__version__
 # The full version, including alpha/beta/rc tags.
@@ -111,7 +124,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'scipy'
 
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the
@@ -119,11 +132,30 @@ html_theme = 'default'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = ['_theme']
+
+if 'scipyorg' in tags:
+    # Build for the scipy.org website
+    html_theme_options = {
+        "edit_link": True,
+        "sidebar": "right",
+        "scipy_org_logo": True,
+        "rootlinks": [("http://scipy.org/", "Scipy.org"),
+                      ("http://docs.scipy.org/", "Docs")]
+    }
+else:
+    # Default build
+    html_theme_options = {
+        "edit_link": False,
+        "sidebar": "left",
+        "scipy_org_logo": False,
+        "rootlinks": []
+    }
+    html_sidebars = {}
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = "%s v%s Manual" % (project, version)
 
 # A shorter title for the navigation bar.  Default is the same as
 # html_title.
@@ -146,7 +178,7 @@ html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.
-#html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -208,9 +240,9 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'tt.tex',
-     u'tt Documentation',
-     u'tt', 'manual'),
+    ('index', 'tushare_easy.tex',
+     u'tusahre_easy Documentation',
+     u'tushare_easy', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at
@@ -273,3 +305,9 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# Example configuration for intersphinx: refer to the Python standard library.
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/', None),
+    'scikit-learn': ('http://scikit-learn.org/stable/', None),
+}
