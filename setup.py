@@ -5,6 +5,8 @@
 
 from setuptools import setup, find_packages
 
+import tushare_easy
+
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
@@ -25,18 +27,18 @@ test_requirements = [
 
 setup(
     name='tt',
-    version='0.1.0',
-    description="test",
+    version=tushare_easy.__version__,
+    description='make tushare easyer',
     long_description=readme + '\n\n' + history,
-    author="tt",
+    author='yingnn',
     author_email='yingnn@live.cn',
     url='https://github.com/yingnn/tt',
-    packages=find_packages(include=['tt']),
+    packages=find_packages(include=['tushare_easy']),
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='tt',
+    keywords='tushare_easy, tushare',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

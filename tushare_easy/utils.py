@@ -1,5 +1,4 @@
-"""
-tushare_easy utils
+"""tushare_easy utils
 
 """
 from __future__ import print_function
@@ -32,7 +31,7 @@ def set_date_index(df, labels=CONSTS.index_labels_date):
     Parameters
     ----------
     df : pandas.DataFrame
-        data
+        data getting from `tushare.get_k_data`
     labels : list-like
         labels using to set as df index, sequenced preferred
 
@@ -75,9 +74,11 @@ def read_data(filepath, header=0):
     ----------
     filepath : str
     header : int or None
+
     Returns
     -------
-    pd.DataFrame
+    `pandas.DataFrame`
+    
     """
     return pd.read_table(filepath, parse_dates=True,
                          index_col=0, header=header)
@@ -93,7 +94,8 @@ def fmt_filename(name_list):
 
     Parameters
     ----------
-    name_list : list like [code, start, end, ktype]
+    name_list : list of str
+        four elements list: [code, start, end, ktype]
 
     Returns
     -------
@@ -127,8 +129,9 @@ def extract_start_end(df):
 
     Returns
     -------
-    (start, end) : tuple
-        tuple with two datetime string elements
+    start, end : str
+        datetime string, format:
+        '%Y-%m-%d %H:%M'
     """
     fmt_time = '%Y-%m-%d-%H-%M'
     start = df.index[0].strftime(fmt_time)
@@ -137,13 +140,12 @@ def extract_start_end(df):
 
 
 def get_local(code, ktype='d', path='.'):
-    """
-    get last file and demo
+    """get last file and demo
 
     Parameters
     ----------
     code : str
-    ktype : str
+    ktype : {'d', '5', '15', '30', '60', 'w', 'm'}
     path : str
         where to search file
 
@@ -167,15 +169,16 @@ def get_local(code, ktype='d', path='.'):
 
 def get_arrow(strftime):
     """
-    get ``arrow.arrow.Arrow`` from str with local timezone info
+    get `arrow.arrow.Arrow` from str with local timezone info
 
     Parameters
     ----------
-    strftime : str, with format '%Y-%m-%d-%M-%s'
+    strftime : str
+        format '%Y-%m-%d-%H-%M'
 
     Returns
     -------
-    ``arrow.arrow.Arrow``
+    `arrow.arrow.Arrow`
 
     """
     time_tz = strftime + CONSTS.tz_local
@@ -188,11 +191,11 @@ def get_end_date(ktype='d'):
 
     Parameters
     ----------
-    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+    ktype : {'d', '5', '15', '30', '60', 'w', 'm'}
 
     Returns
     -------
-    end_datetime : ``arrow.arrow.Arrow``
+    end_datetime : `arrow.arrow.Arrow`
 
     """
     today = arrow.utcnow()
@@ -218,12 +221,13 @@ def get_threshhold_datetime(time_str, ktype='d'):
 
     Parameters
     ----------
-    time_str : str, with format '%Y-%m-%d-%M-%s'
-    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+    time_str : str
+        format '%Y-%m-%d-%H-%M'
+    ktype : {'d', '5', '15', '30', '60', 'w', 'm'}
 
     Returns
     -------
-    threshhold_datetime : ``arrow.arrow.Arrow``
+    threshhold_datetime : `arrow.arrow.Arrow`
 
     """
     time_arrow = get_arrow(time_str)
@@ -249,8 +253,9 @@ def is_up_to_date(end_local_str, ktype='d',):
 
     Parameters
     ----------
-    end_local_str : str, with format '%Y-%m-%d-%M-%s'
-    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
+    end_local_str : str
+        format '%Y-%m-%d-%H-%M'
+    ktype : {'d', '5', '15', '30', '60', 'w', 'm'}
 
     Returns
     -------
@@ -291,7 +296,7 @@ def down2save(code, ktype='d', start=None, end=None, path='.'):
 
 def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     """
-    get k_chart date and save them locally, and update them
+    get k_chart date and save them locally, and update them.
 
     get k_chart data using `tushare.get_k_data`
     save data locally with tab separated files
@@ -300,9 +305,10 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     Parameters
     ----------
     code : str
-    ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
-    start : str or None, format '%Y-%m-%d-%M-%s'
-    end : str or None, format the same as `start`
+    ktype : format '%Y-%m-%d-%H-%M'
+    start, end : str or None
+        `datetime.datetime` format '%Y-%m-%d-%H-%M'
+        e.g. '2017-12-12-23-59'
     path : str
         where to search files locally
 
