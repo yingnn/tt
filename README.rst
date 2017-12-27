@@ -9,8 +9,8 @@ tushare_easy
 .. image:: https://img.shields.io/travis/yingnn/tt.svg
         :target: https://travis-ci.org/yingnn/tt
 
-.. image:: https://readthedocs.org/projects/tt/badge/?version=latest
-        :target: https://tt.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/tt-/badge/?version=latest
+        :target: https://tt-.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/yingnn/tt/shield.svg
