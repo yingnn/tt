@@ -1,7 +1,7 @@
 numpydoc
 #tushare_easy
 
-unipth
+unipath
 arrow
 pandas
 tushare
