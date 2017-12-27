@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* tt <yingnn@live.cn>
+* yingnn <yingnn@live.cn>
 
 Contributors
 ------------

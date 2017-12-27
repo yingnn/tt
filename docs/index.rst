@@ -9,8 +9,13 @@ Welcome to tushare_easy's documentation!
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
-
+   
+   readme
+   installation
    tushare_easy
+   contributing
+   authors
+   history
 
 
 Indices and tables
