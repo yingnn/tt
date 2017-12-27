@@ -171,7 +171,7 @@ def get_arrow(strftime):
 
     Parameters
     ----------
-    strftime : str, with format '%Y-%m-%d-%M-%s'
+    strftime : str, with format '%Y-%m-%d-%M-%'
 
     Returns
     -------
@@ -218,7 +218,7 @@ def get_threshhold_datetime(time_str, ktype='d'):
 
     Parameters
     ----------
-    time_str : str, with format '%Y-%m-%d-%M-%s'
+    time_str : str, with format '%Y-%m-%d-%M-%S'
     ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
 
     Returns
@@ -249,7 +249,7 @@ def is_up_to_date(end_local_str, ktype='d',):
 
     Parameters
     ----------
-    end_local_str : str, with format '%Y-%m-%d-%M-%s'
+    end_local_str : str, with format '%Y-%m-%d-%M-%S'
     ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
 
     Returns
@@ -291,7 +291,7 @@ def down2save(code, ktype='d', start=None, end=None, path='.'):
 
 def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     """
-    get k_chart date and save them locally, and update them
+    get k_chart date and save them locally, and update them.
 
     get k_chart data using `tushare.get_k_data`
     save data locally with tab separated files
@@ -301,7 +301,9 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
     ----------
     code : str
     ktype : str, {'5', '15', '30', '60', 'd', 'w', 'm'}
-    start : str or None, format '%Y-%m-%d-%M-%s'
+    start : str or None
+        ``datetime.datetime`` format '%Y-%m-%d-%M-%S'
+        e.g. '2017-12-12-23-59'.
     end : str or None, format the same as `start`
     path : str
         where to search files locally

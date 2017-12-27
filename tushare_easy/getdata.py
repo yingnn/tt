@@ -197,14 +197,14 @@ class GetData(RunFunc):
 
         Examples
         --------
+        >>> import os
         >>> import pandas as pd
         >>> import tushare as ts
-        >>> ktypes = ['5', '15', '30', '60', 'd', 'w', 'm']
         >>> home = os.path.join(os.environ['HOME'], 'data', 'ts', 'k_chart')
         >>> get_code = RunFunc(home)
         >>> get_code.set_func(ts.get_stock_basics)
         >>> codes = get_code.run().index.values
-        >>> getdf = GetData(codes, ktypes, home=home)
+        >>> getdf = GetData(codes, home=home)
         >>> getdf.run_loop()
 
         """
