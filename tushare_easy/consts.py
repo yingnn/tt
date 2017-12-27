@@ -19,6 +19,7 @@ code_std = '000001'
 time_fmt = 'YYYY-MM-DD-HH-mmZZ'
 
 ktypes = ['5', '15', '30', '60', 'd', 'w', 'm']
+
 datetime_shift_search = {
     '5': {'days': -10},
     '15': {'days': -10},

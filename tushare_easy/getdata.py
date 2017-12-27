@@ -25,6 +25,11 @@ def _chcwd(path):
 class Base(object):
     """
     set and make directory
+    
+    Parameters
+    ----------
+    home : str
+        set a directory as home
     """
 
     def __init__(self, home='.'):
@@ -127,6 +132,11 @@ class RunFunc(Base):
     setup target directory and function,
     then run function within target
     directory
+
+    Parameters
+    ----------
+    home : str
+        set a directory as home
     """
 
     def __init__(self, home='.'):
@@ -159,8 +169,10 @@ class RunFunc(Base):
 
         Parameters
         ----------
-        args : args of `self.func`
-        kwargs : kwargs of `self.func`
+        args : 
+            args of `self.func`
+        kwargs : 
+            keyworad args of `self.func`
 
         Returns
         -------
@@ -177,8 +189,35 @@ class GetData(RunFunc):
     """
     get data and save them locally
 
-    get df using tushare's `get_k_date` function
+    get df using ``tushare``'s ``get_k_date`` function
     save df to local without duplication
+    
+    Parameters
+    ----------
+    home : str
+        current work directory
+    codes : list-like
+    ktypes: list-like
+    start : str
+        time format '%Y-%m-%d-%H-%M'
+    end : str
+        same format as `start`
+
+    Returns
+    -------
+
+    Examples
+    --------
+    >>> import os
+    >>> import pandas as pd
+    >>> import tushare as ts
+    >>> home = os.path.join(os.environ['HOME'], 'data', 'ts', 'k_chart')
+    >>> get_code = RunFunc(home)
+    >>> get_code.set_func(ts.get_stock_basics)
+    >>> codes = get_code.run().index.values
+    >>> getdf = GetData(codes, home=home)
+    >>> getdf.run_loop()
+
     """
 
     def __init__(self, codes, ktypes=CONSTS.ktypes,
@@ -186,11 +225,14 @@ class GetData(RunFunc):
         """
         Parameters
         ----------
-        home : str, current work directory
+        home : str
+            current work directory
         codes : list-like
         ktypes: list-like
-        start : str, time format '%Y-%m-%d-%H-%M'
-        end : str, same format to `start`
+        start : str
+            time format '%Y-%m-%d-%H-%M'
+        end : str
+            same format as `start`
 
         Returns
         -------
