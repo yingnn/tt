@@ -211,10 +211,11 @@ class GetData(RunFunc):
     >>> import os
     >>> import pandas as pd
     >>> import tushare as ts
-    >>> home = os.path.join(os.environ['HOME'], 'data', 'ts', 'k_chart')
-    >>> get_code = RunFunc(home)
+    >>> from tushare_easy.getdata import RunFunc, GetData
+    >>> get_code = RunFunc()
     >>> get_code.set_func(ts.get_stock_basics)
     >>> codes = get_code.run().index.values
+    >>> home = os.path.join(os.environ['HOME'], 'data', 'ts', 'k_chart')
     >>> getdf = GetData(codes, home=home)
     >>> getdf.run_loop()
 
@@ -242,6 +243,7 @@ class GetData(RunFunc):
         >>> import os
         >>> import pandas as pd
         >>> import tushare as ts
+        >>> from tushare_easy.getdata import RunFunc, GetData
         >>> get_code = RunFunc()
         >>> get_code.set_func(ts.get_stock_basics)
         >>> codes = get_code.run().index.values

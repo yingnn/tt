@@ -12,6 +12,7 @@ Welcome to tushare_easy's documentation!
    
    readme
    installation
+   usage
    tushare_easy
    contributing
    authors
