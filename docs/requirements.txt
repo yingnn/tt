@@ -5,3 +5,4 @@ unipath
 arrow
 pandas
 tushare
+bs4

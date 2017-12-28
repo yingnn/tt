@@ -26,13 +26,13 @@ test_requirements = [
 ]
 
 setup(
-    name='tt',
+    name='tushare_easy',
     version=tushare_easy.__version__,
     description='make tushare easyer',
     long_description=readme + '\n\n' + history,
     author='yingnn',
     author_email='yingnn@live.cn',
-    url='https://github.com/yingnn/tt',
+    url='https://github.com/yingnn/tushare_easy',
     packages=find_packages(include=['tushare_easy']),
     include_package_data=True,
     install_requires=requirements,
@@ -44,15 +44,11 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
     tests_require=test_requirements,
     setup_requires=setup_requirements,
+    scripts = ['scripts/tushare_easy'], 
 )

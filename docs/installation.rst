@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install tt, run this command in your terminal:
+To install tushare_easy, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install tt
+    $ pip install tushare_easy
 
-This is the preferred method to install tt, as it will always install the most recent stable release. 
+This is the preferred method to install tushare_easy, as it will always install the most recent stable release. 
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for tt can be downloaded from the `Github repo`_.
+The sources for tushare_easy can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/yingnn/tt
+    $ git clone git://github.com/yingnn/tushare_easy
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/yingnn/tt/tarball/master
+    $ curl  -OL https://github.com/yingnn/tushare_easy/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/yingnn/tt
-.. _tarball: https://github.com/yingnn/tt/tarball/master
+.. _Github repo: https://github.com/yingnn/tushare_easy
+.. _tarball: https://github.com/yingnn/tushare_easy/tarball/master

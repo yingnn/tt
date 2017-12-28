@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/yingnn/tt/issues.
+Report bugs at https://github.com/yingnn/tushare_easy/issues.
 
 If you are reporting a bug, please include:
 
@@ -38,14 +38,14 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-tt could always use more documentation, whether as part of the
-official tt docs, in docstrings, or even on the web in blog posts,
+tushare_easy could always use more documentation, whether as part of the
+official tushare_easy docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/yingnn/tt/issues.
+The best way to send feedback is to file an issue at https://github.com/yingnn/tushare_easy/issues.
 
 If you are proposing a feature:
 
@@ -57,17 +57,17 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `tt` for local development.
+Ready to contribute? Here's how to set up `tushare_easy` for local development.
 
-1. Fork the `tt` repo on GitHub.
+1. Fork the `tushare_easy` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/tt.git
+    $ git clone git@github.com:your_name_here/tushare_easy.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv tt
-    $ cd tt/
+    $ mkvirtualenv tushare_easy
+    $ cd tushare_easy/
     $ python setup.py develop
 
 4. Create a branch for local development::
@@ -78,7 +78,7 @@ Ready to contribute? Here's how to set up `tt` for local development.
 
 5. When you're done making changes, check that your changes pass flake8 and the tests, including testing other Python versions with tox::
 
-    $ flake8 tt tests
+    $ flake8 tushare_easy tests
     $ python setup.py test or py.test
     $ tox
 
@@ -102,7 +102,7 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
 3. The pull request should work for Python 2.6, 2.7, 3.3, 3.4 and 3.5, and for PyPy. Check
-   https://travis-ci.org/yingnn/tt/pull_requests
+   https://travis-ci.org/yingnn/tushare_easy/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
@@ -111,4 +111,4 @@ Tips
 To run a subset of tests::
 
 
-    $ python -m unittest tests.test_tt
+    $ python -m unittest tests.test_tushare_easy

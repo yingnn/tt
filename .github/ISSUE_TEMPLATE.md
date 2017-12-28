@@ -1,4 +1,4 @@
-* tt version:
+* tushare_easy version:
 * Python version:
 * Operating System:
 

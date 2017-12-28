@@ -1,0 +1,12 @@
+#!/urs/bin/env python
+
+if __name__ == '__main__':
+    import os
+    import pandas as pd
+    import tushare as ts
+    get_code = RunFunc(home)
+    get_code.set_func(ts.get_stock_basics)
+    codes = get_code.run().index.values
+    home = os.path.join(os.environ['home'], 'data', 'ts', 'k_chart')
+    getdf = GetData(codes, home=home)
+    getdf.run_loop()
