@@ -48,7 +48,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 lint: ## check style with flake8
-	flake8 tt tests
+	flake8 tushare_easy tests
 
 test: ## run tests quickly with the default Python
 	
@@ -58,7 +58,7 @@ test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source tt setup.py test
+	coverage run --source tushare_easy setup.py test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html

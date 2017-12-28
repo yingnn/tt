@@ -6,15 +6,15 @@ tushare_easy
 .. image:: https://img.shields.io/pypi/v/tushare_easy.svg
         :target: https://pypi.python.org/pypi/tushare_easy
 
-.. image:: https://img.shields.io/travis/yingnn/tt.svg
-        :target: https://travis-ci.org/yingnn/tt
+.. image:: https://img.shields.io/travis/yingnn/tushare_easy.svg
+        :target: https://travis-ci.org/yingnn/tushare_easy
 
-.. image:: https://readthedocs.org/projects/tt-/badge/?version=latest
-        :target: https://tt-.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/tushare_easy/badge/?version=latest
+        :target: https://tushare_easy.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/yingnn/tt/shield.svg
-     :target: https://pyup.io/repos/github/yingnn/tt/
+.. image:: https://pyup.io/repos/github/yingnn/tushare_easy/shield.svg
+     :target: https://pyup.io/repos/github/yingnn/tushare_easy/
      :alt: Updates
 
 
@@ -22,7 +22,7 @@ Get stock market k_chart data using ``tushare.get_k_data`` api, and save data to
 
 
 * Free software: MIT license
-* Documentation: https://tt-.readthedocs.io.
+* Documentation: https://tushare_easy.readthedocs.io.
 
 
 Credits

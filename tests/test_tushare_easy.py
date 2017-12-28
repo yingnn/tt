@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `tt` package."""
+"""Tests for `tushare_easy` package."""
 
 
 import unittest
 
 
 class TestTushareEasy(unittest.TestCase):
-    """Tests for `tt` package."""
+    """Tests for `tushare_easy` package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
