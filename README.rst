@@ -18,11 +18,28 @@ tushare_easy
      :alt: Updates
 
 
-Get stock market k_chart data using ``tushare.get_k_data`` api, and save data to tab separated files locally
+Get stock market k_chart data using ``tushare.get_k_data`` api, 
+and save data to tab separated files locally.
 
+Documentation: https://tushare_easy.readthedocs.io
+
+
+Installation
+------------
+
+the easiest way to install scikit-learn is using ``pip`` ::
+
+    pip install tushare_easy
+    
+    
+Quickstart
+----------
+
+::
+    tushare_easy
+    
 
 * Free software: MIT license
-* Documentation: https://tushare_easy.readthedocs.io.
 
 
 Credits

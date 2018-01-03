@@ -14,7 +14,10 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'arrow',
+    'unipath',
+    'pandas',
+    'tushare',
 ]
 
 setup_requirements = [
