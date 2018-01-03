@@ -27,16 +27,17 @@ Documentation: https://tushare_easy.readthedocs.io
 Installation
 ------------
 
-the easiest way to install scikit-learn is using ``pip`` ::
+The easiest way to install scikit-learn is using ``pip``::
 
-    pip install tushare_easy
+    $ pip install tushare_easy
     
     
-Quickstart
-----------
+Quick start
+-----------
 
 ::
-    tushare_easy
+
+    $ tushare_easy
     
 
 * Free software: MIT license
