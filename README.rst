@@ -38,9 +38,6 @@ Quick start
 ::
 
     $ tushare_easy
-    
-
-* Free software: MIT license
 
 
 Credits
