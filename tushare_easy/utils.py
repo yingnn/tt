@@ -283,7 +283,7 @@ def down2save(code, ktype='d', start=None, end=None, path='.'):
         return df
 
     df_demo = get_demo(df)
-    print(df_demo)
+    # print(df_demo)
 
     start, end = extract_start_end(df_demo)
 
@@ -324,7 +324,7 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
         return down2save(code, ktype, start, end, path)
 
     df_demo_local = read_data(filename_demo_local)
-    print(df_demo_local)
+    # print(df_demo_local)
     start_local, end_local = extract_start_end(df_demo_local)
     if is_up_to_date(end_local, ktype):
         print('data up to date')
@@ -344,7 +344,7 @@ def down2save_update(code, ktype='d', start=None, end=None, path='.'):
         return df_newer
 
     df_demo_new = get_demo_new(df_demo_local, df_newer)
-    print(df_demo_new)
+    # print(df_demo_new)
     _, end_newer = extract_start_end(df_demo_new)
 
     filename_list_new = [code, start_local, end_newer, ktype]
