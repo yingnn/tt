@@ -27,6 +27,8 @@ setup_requirements = [
 ]
 
 test_requirements = [
+    'lxml',
+    'pandas',
     'flake8',
     'tox',
 ]
