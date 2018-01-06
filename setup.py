@@ -22,11 +22,13 @@ requirements = [
 ]
 
 setup_requirements = [
-    # TODO(yingnn): put setup requirements (distutils extensions, etc.) here
+    'lxml',
+    'pandas',
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    'flake8',
+    'tox',
 ]
 
 setup(
