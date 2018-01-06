@@ -17,6 +17,7 @@ requirements = [
     'arrow',
     'unipath',
     'pandas',
+    'lxml'
     'tushare',
 ]
 
