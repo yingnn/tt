@@ -275,9 +275,27 @@ class GetData(RunFunc):
     def end(self):
         return self._end
 
-    def run_loop(self,):
+    def run_loop(self, codes_random=False):
+        """
+        Get data looping for codes
+        
+        Parameters
+        ----------
+        codes_random : bool
+            if `True`, looping for codes randomly
+
+        Returns
+        -------
+        
+        """
+        if codes_random:
+            codes = np.random.choice(self._codes,
+                                     size=self._codes.shape[0],
+                                     replace=False)
+        else:
+            codes = self._codes
         home = self._home
-        for code in self._codes:
+        for code in codes:
             self._home = home.child(code)
             print(self.home)
             self.make_home()
