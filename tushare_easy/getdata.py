@@ -4,6 +4,7 @@
 from __future__ import print_function
 import os
 import functools
+import numpy as np
 from unipath import Path
 from .utils import down2save_update
 from . import consts as CONSTS
