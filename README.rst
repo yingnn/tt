@@ -29,7 +29,8 @@ Installation
 
 The easiest way to install scikit-learn is using ``pip``::
 
-    $ pip install tushare_easy
+    $ pip install git+https://github.com/yingnn/tushare_easy # from Github, up-to-date
+    $ pip install tushare_easy # from PyPI
     
     
 Quick start
