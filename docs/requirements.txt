@@ -4,5 +4,7 @@ numpydoc
 unipath
 arrow
 pandas
+xlrd
+lxml
 tushare
 bs4
