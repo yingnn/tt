@@ -13,9 +13,8 @@ from . import consts as CONSTS
 
 def get_codes(index=False):
     if index:
-        return ts.get_stock_basics().index.values
-    return ts.get_index()['code'].values
-
+        return ts.get_index()['code'].values
+    return ts.get_stock_basics().index.values
 
 def get_data(code, ktype='d', start=None, end=None):
     if start is None:

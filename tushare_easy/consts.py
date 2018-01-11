@@ -1,7 +1,7 @@
 """tushare_easy constants
 
 """
-
+index_prefix = 'i'
 index_labels_str = ['code']
 index_labels_date = ['date', 'month']
 
