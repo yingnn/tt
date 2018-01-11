@@ -263,6 +263,21 @@ class GetData(RunFunc):
     @property
     def codes(self):
         return self._codes
+    
+    @codes.setter
+    def codes(self, codes):
+        """
+        set codes
+        
+        Parameters
+        ----------
+        codes : list-like
+
+        Returns
+        -------
+        
+        """
+        self._codes = np.array(codes)
 
     @property
     def ktypes(self):

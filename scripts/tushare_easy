@@ -4,10 +4,21 @@ if __name__ == '__main__':
     import os
     import pandas as pd
     import tushare as ts
+    from tushare.easy.utils import get_codes
     from tushare_easy.getdata import RunFunc, GetData
+    
+    
     get_code = RunFunc()
-    get_code.set_func(ts.get_stock_basics)
-    codes = get_code.run().index.values
+    get_code.set_func(get_codes)
+    codes_index = get_code.run(index=True)
+    
     home = os.path.join(os.environ['HOME'], 'data', 'ts', 'k_chart')
-    getdf = GetData(codes, home=home)
+    getdf = GetData(codes_index, home=home)
     getdf.run_loop()
+    
+    codes = get_code.run()
+    getdf.codes = codes
+    getdf.run_loop(True)
+    
+    
+    
