@@ -24,6 +24,12 @@ def get_data(code, ktype='d', start=None, end=None):
         end = ''
 
     print(code, ktype)
+    if code.startwith(CONSTS.index_prefix):
+        return ts.get_k_data(code, ktype=ktype,
+                             start=start, end=end,
+                             index=True,
+                             retry_count=CONSTS.retry_count,
+                             pause=CONSTS.pause)
     return ts.get_k_data(code, ktype=ktype,
                          start=start, end=end,
                          retry_count=CONSTS.retry_count,
