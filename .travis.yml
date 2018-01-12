@@ -12,7 +12,7 @@ python:
 # If you have a requirements.txt file, Travis CI runs pip install -r requirements.txt during the install phase of the build.
 
 before_install:
-  - pip install xlrd lxml
+  - pip install xlrd lxml pandas requests
   
 install: 
   - pip install -r requirements_dev.txt
