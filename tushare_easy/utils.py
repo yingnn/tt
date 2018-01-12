@@ -16,6 +16,7 @@ def get_codes(index=False):
         return CONSTS.index_prefix + \
             ts.get_index()['code'].values
     return ts.get_stock_basics().index.values
+    
 
 def get_data(code, ktype='d', start=None, end=None):
     if start is None:
@@ -24,7 +25,7 @@ def get_data(code, ktype='d', start=None, end=None):
         end = ''
 
     print(code, ktype)
-    if code.startwith(CONSTS.index_prefix):
+    if code.startswith(CONSTS.index_prefix):
         return ts.get_k_data(code, ktype=ktype,
                              start=start, end=end,
                              index=True,
