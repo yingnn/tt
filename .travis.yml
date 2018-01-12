@@ -11,11 +11,10 @@ python:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 # If you have a requirements.txt file, Travis CI runs pip install -r requirements.txt during the install phase of the build.
 
-before_install:
-  - pip install xlrd lxml pandas requests
+# before_install:
+  # - pip install xlrd lxml pandas requests
   
 install: 
-  - pip install -r requirements_dev.txt
   - pip install -U tox-travis
 
 # command to run tests, e.g. python setup.py test
