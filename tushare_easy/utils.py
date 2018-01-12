@@ -26,6 +26,7 @@ def get_data(code, ktype='d', start=None, end=None):
 
     print(code, ktype)
     if code.startswith(CONSTS.index_prefix):
+        code = code[1:]
         return ts.get_k_data(code, ktype=ktype,
                              start=start, end=end,
                              index=True,
