@@ -4,7 +4,7 @@ if __name__ == '__main__':
     import os
     import pandas as pd
     import tushare as ts
-    from tushare_easy.utils import get_codes
+    from tushare_easy.utils import get_codes, get_tick_data
     from tushare_easy.getdata import RunFunc, GetData
     
     
@@ -19,6 +19,11 @@ if __name__ == '__main__':
     codes = get_code.run()
     getdf.codes = codes
     getdf.run_loop(True)
+    
+    # home = os.path.join(os.environ['HOME'], 'data', 'ts', 'tick')
+    # getdf = GetData(codes, home=home)
+    # get_data = get_tick_data
+    # filename = 
     
     
     

@@ -11,6 +11,11 @@ from unipath import Path
 from . import consts as CONSTS
 
 
+def get_today_str(str_format='YYYY-MM-DD-HH-mm'):
+    ar = arrow.now()
+    return ar.format(str_format)
+
+
 def get_codes(index=False):
     if index:
         return CONSTS.index_prefix + \
@@ -36,6 +41,25 @@ def get_data(code, ktype='d', start=None, end=None):
                          start=start, end=end,
                          retry_count=CONSTS.retry_count,
                          pause=CONSTS.pause)
+                         
+
+def get_tick_data(code, day):
+    srcs = ['sn', 'tt', 'nt']
+    index = 'time'
+    for src in srcs:
+        try:
+            df = ts.get_tick_data(code, day,
+                                  retry_count=CONSTS.retry_count,
+                                  pause=CONSTS.pause,
+                                  src=src)
+            if df[index][0].startswith('alert'):
+                return warn('today no data')
+            df = df.set_index(index)
+            df.index = pd.DatetimeIndex(df.index)
+            return df
+        except:
+            if src == srcs[-1]:
+                return warn('download data error')
 
 
 def set_date_index(df, labels=CONSTS.index_labels_date):

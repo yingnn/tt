@@ -9,7 +9,7 @@ filename_sep = '_'
 
 demo = 'demo'
 
-retry_count = 3
+retry_count = 6
 pause = .1
 
 tz_local = '+08:00'
